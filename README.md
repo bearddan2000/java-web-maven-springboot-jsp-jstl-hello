@@ -1,4 +1,4 @@
-# java-web-maven-springboot-jsp-hello-world
+# java-web-maven-springboot-jsp-jstl-hello
 
 ## Description
 A POC for spring framework.

@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  java-srv:
+    build: java-srv
+    ports:
+      - 80:8080
+    depends_on:
+      db:
+        condition: service_healthy
+        restart: true
+
+  db:
+    image: mariadb:latest
+    ports:
+      - 3306
+    healthcheck:
+      test: "pwd"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=maria
+      - MYSQL_PASSWORD=pass
+    volumes:
+      - ./db/sql:/docker-entrypoint-initdb.d
